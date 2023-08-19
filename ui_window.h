@@ -45,24 +45,25 @@ public:
     QGroupBox *groupBox;
     QTabWidget *tabWidget;
     QWidget *tab;
-    QTableView *tableView;
+    QTableView *personView;
     QWidget *tab_2;
+    QTableView *familyView;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLineEdit *lineEdit;
+    QLabel *nameLabel;
+    QLineEdit *nameEdit;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLabel *surnameLabel;
+    QLineEdit *surnameEdit;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label_3;
-    QLineEdit *lineEdit_3;
+    QLabel *birthLabel;
+    QLineEdit *birthEdit;
     QHBoxLayout *horizontalLayout_4;
-    QLabel *label_4;
-    QLineEdit *lineEdit_4;
+    QLabel *deathLabel;
+    QLineEdit *deathEdit;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_6;
     QLineEdit *lineEdit_6;
@@ -77,7 +78,7 @@ public:
     {
         if (Window->objectName().isEmpty())
             Window->setObjectName("Window");
-        Window->resize(1079, 600);
+        Window->resize(1041, 600);
         newAction = new QAction(Window);
         newAction->setObjectName("newAction");
         openAction = new QAction(Window);
@@ -105,12 +106,15 @@ public:
         tabWidget->setGeometry(QRect(10, 20, 611, 261));
         tab = new QWidget();
         tab->setObjectName("tab");
-        tableView = new QTableView(tab);
-        tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(0, 0, 601, 231));
+        personView = new QTableView(tab);
+        personView->setObjectName("personView");
+        personView->setGeometry(QRect(0, 0, 601, 231));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName("tab_2");
+        familyView = new QTableView(tab_2);
+        familyView->setObjectName("familyView");
+        familyView->setGeometry(QRect(0, 0, 611, 231));
         tabWidget->addTab(tab_2, QString());
         scrollArea = new QScrollArea(groupBox);
         scrollArea->setObjectName("scrollArea");
@@ -128,60 +132,65 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        label = new QLabel(layoutWidget);
-        label->setObjectName("label");
+        nameLabel = new QLabel(layoutWidget);
+        nameLabel->setObjectName("nameLabel");
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(nameLabel);
 
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName("lineEdit");
+        nameEdit = new QLineEdit(layoutWidget);
+        nameEdit->setObjectName("nameEdit");
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(nameEdit);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName("label_2");
+        surnameLabel = new QLabel(layoutWidget);
+        surnameLabel->setObjectName("surnameLabel");
 
-        horizontalLayout_2->addWidget(label_2);
+        horizontalLayout_2->addWidget(surnameLabel);
 
-        lineEdit_2 = new QLineEdit(layoutWidget);
-        lineEdit_2->setObjectName("lineEdit_2");
+        surnameEdit = new QLineEdit(layoutWidget);
+        surnameEdit->setObjectName("surnameEdit");
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(surnameEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName("label_3");
+        birthLabel = new QLabel(layoutWidget);
+        birthLabel->setObjectName("birthLabel");
 
-        horizontalLayout_3->addWidget(label_3);
+        horizontalLayout_3->addWidget(birthLabel);
 
-        lineEdit_3 = new QLineEdit(layoutWidget);
-        lineEdit_3->setObjectName("lineEdit_3");
+        birthEdit = new QLineEdit(layoutWidget);
+        birthEdit->setObjectName("birthEdit");
 
-        horizontalLayout_3->addWidget(lineEdit_3);
+        horizontalLayout_3->addWidget(birthEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName("horizontalLayout_4");
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName("label_4");
+        deathLabel = new QLabel(layoutWidget);
+        deathLabel->setObjectName("deathLabel");
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(deathLabel->sizePolicy().hasHeightForWidth());
+        deathLabel->setSizePolicy(sizePolicy);
 
-        horizontalLayout_4->addWidget(label_4);
+        horizontalLayout_4->addWidget(deathLabel);
 
-        lineEdit_4 = new QLineEdit(layoutWidget);
-        lineEdit_4->setObjectName("lineEdit_4");
+        deathEdit = new QLineEdit(layoutWidget);
+        deathEdit->setObjectName("deathEdit");
 
-        horizontalLayout_4->addWidget(lineEdit_4);
+        horizontalLayout_4->addWidget(deathEdit);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -220,7 +229,7 @@ public:
         Window->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Window);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1079, 22));
+        menubar->setGeometry(QRect(0, 0, 1041, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         Window->setMenuBar(menubar);
@@ -241,7 +250,7 @@ public:
 
         retranslateUi(Window);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Window);
@@ -276,10 +285,10 @@ public:
         groupBox->setTitle(QCoreApplication::translate("Window", "List", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("Window", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("Window", "Tab 2", nullptr));
-        label->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
-        label_2->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
-        label_3->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
-        label_4->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
+        nameLabel->setText(QCoreApplication::translate("Window", "Firstname:", nullptr));
+        surnameLabel->setText(QCoreApplication::translate("Window", "Surname:", nullptr));
+        birthLabel->setText(QCoreApplication::translate("Window", "Birthdate:", nullptr));
+        deathLabel->setText(QCoreApplication::translate("Window", "Death:", nullptr));
         label_6->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
         label_5->setText(QCoreApplication::translate("Window", "TextLabel", nullptr));
         menuFile->setTitle(QCoreApplication::translate("Window", "File", nullptr));
