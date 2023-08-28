@@ -124,7 +124,7 @@ Window::Window(QWidget *parent)
         QDesktopServices::openUrl(QUrl("https://ebadatelna.soapraha.cz/pages/SearchMatrikaPage?1"));
     });
     QAction::connect((ui->actionAbout),QAction::triggered,[&](){    // Informace o programu
-        QMessageBox::about(this, "About application", "This application was created as a term project in the subject PPC. Other information and documentation could be find on Github: <a href='https://github.com/peeregrinus/ppc_project'>Github repo</a>");
+        QMessageBox::about(this, "About application", "This application was created as a term project in the subject PPC. Other information and documentation could be find on Github: <a href='https://github.com/peeregrinus/GenDB'>Github repo</a>");
     });
 }
 
