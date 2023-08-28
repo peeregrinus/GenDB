@@ -1,4 +1,4 @@
-# ppc_project
+# GenDB
 Genealogy research program
 
 Tato aplikace vznikla jako semestrální projekt pro předmět PPC. 
@@ -17,3 +17,6 @@ Nápady na vylepšení
 - Protože je datum v SQLite uloženo jako textový řetězec, mohlo by se datum parsovat pomocí QRegExpression. Tím by vznikla možnost načítat a ukládat i datumy, které nejsou plnohodnotné.
 - Místo filtrů datumů vytvořít rozevírací widgety kalendáře, které by filtrovali data v zadaném rozmezí. Bohužel s existujícím widgetem kalendáře toto nelze, které nešlo přenastavit na starší datum než 14.09.1752.
 - Načítat více údajů do tabulek, které by mohli být potřebné (např. bydliště, zaměstnání).
+- Vylepšit oznamování veškerých chyb.
+- Vylepšit vzhled aplikace pro fullscreen
+- Doladit, vylepšit a zefektivnit fungování některých částí programu po objevení dalších možností při dodělávání programu.
