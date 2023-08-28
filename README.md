@@ -20,3 +20,5 @@ Nápady na vylepšení
 - Vylepšit oznamování veškerých chyb.
 - Vylepšit vzhled aplikace pro fullscreen
 - Doladit, vylepšit a zefektivnit fungování některých částí programu po objevení dalších možností při dodělávání programu.
+
+K projektu jsou přiloženy testovaci GED soubory, které jsou staženy z https://chronoplexsoftware.com/myfamilytree/samples/index.htm
