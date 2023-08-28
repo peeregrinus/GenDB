@@ -95,13 +95,19 @@ Window::Window(QWidget *parent)
     QAction::connect((ui->closeViewAction),QAction::triggered,[&](){closeView();}); // Zavre aktualni zobrazeni
 
     QAction::connect((ui->revertAction),QAction::triggered,[&](){   // Vrati zmeny provedene v tabulkach
+    if((info.isEmpty() == false)||(database.isOpen()))
+    {
         personModel->revertAll();
         famModel->revertAll();
+    }
     });
 
     QAction::connect((ui->saveAction),QAction::triggered,[&](){ // Ulozi zmeny provedene v tabulkach
+    if((info.isEmpty() == false)||(database.isOpen()))
+    {
         personModel->submitAll();
         famModel->submitAll();
+    }
     });
 
     QAction::connect((ui->exitAction),QAction::triggered,[&](){QApplication::quit();}); // Zavre program
@@ -138,6 +144,9 @@ void Window::initModel()
     personModel->setHeaderData(personModel->fieldIndex("lastname"), Qt::Horizontal, "Lastname");
     personModel->setHeaderData(personModel->fieldIndex("birth"), Qt::Horizontal, "Birthdate");
     personModel->setHeaderData(personModel->fieldIndex("death"), Qt::Horizontal, "Date of death");
+    personModel->setHeaderData(personModel->fieldIndex("famc"), Qt::Horizontal, "Child ID");
+    personModel->setHeaderData(personModel->fieldIndex("fams"), Qt::Horizontal, "Parent ID");
+    personModel->setHeaderData(personModel->fieldIndex("fams2"), Qt::Horizontal, "Parent ID 2");
 
     if (!personModel->select()) {
         showError(personModel->lastError());
@@ -180,7 +189,7 @@ void Window::initModel()
     ui->personView->setModel(proxyModel);
     ui->personView->setSortingEnabled(true);
     ui->personView->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->personView->hideColumn(6); ui->personView->hideColumn(7); ui->personView->hideColumn(8);
+    //ui->personView->hideColumn(6); ui->personView->hideColumn(7); ui->personView->hideColumn(8);
     ui->personView->sortByColumn(0, Qt::AscendingOrder);
     ui->personView->setColumnWidth(0,25);
     ui->personView->setColumnWidth(1,5);
@@ -310,7 +319,7 @@ void Window::initModel()
         qDebug() << "Row index removed " << index;
         personModel->removeRow(index);
         personModel->submitAll();
-        QMessageBox::information(this, "Row removed", "Removed row: " + index);
+        QMessageBox::information(this, "Row removed", "Row " + QString::number(index) + " removed.");
     });
 
     QAction::connect((ui->insertRowButton_2),QPushButton::clicked,[&](){    // Vlozi novy radek na prvni pozici - family
@@ -321,7 +330,7 @@ void Window::initModel()
         int index = ui->familyView->currentIndex().row();
         famModel->removeRow(index);
         famModel->submitAll();
-        QMessageBox::information(this, "Row removed", "Removed row: " + index);
+        QMessageBox::information(this, "Row removed", "Row " + QString::number(index) + " removed.");
     });
 
     QAction::connect((personModel),QSqlRelationalTableModel::dataChanged,[&](){ // Pocet lidi ve statistikach
